@@ -8,6 +8,7 @@
 #include <cassert>
 #include <fstream>
 #include <iostream>
+#include "MatriceAdjacent.h"
 
 class Univers
 {
@@ -15,8 +16,11 @@ class Univers
     unsigned int C; 	// Nombre de couleur
 
     // TODO : Complétez avec les attributs nécessaires pour représenter l'univers
+    std::vector<std::vector<int>> univer;
+    MatriceAdjacent matriceAdjacent;
 
 public:
+
     Univers() {
 
     }
@@ -43,13 +47,17 @@ std::istream& operator >> (std::istream& is, Univers& univers) {
   assert(univers.C > 0);
 
   for(unsigned int y = 0; y<univers.N; y++) {
+    univers.univer.emplace_back();
     for(unsigned int x = 0; x<univers.N; x++) {
       unsigned int couleur;
       is >> couleur;
-      std::cerr << "TODO : considérer la cellule (" << x << ", " << y << ") est de couleur " << couleur << std::endl;
-      // TODO : enregistrer dans une structure de donnée.
+      univers.univer[y].push_back(couleur);
     }
   }
+
+  MatriceAdjacent matriceAdj(univers.univer);
+  univers.matriceAdjacent = matriceAdj;
+
   return is;
 }
 
@@ -60,8 +68,8 @@ int main(int argc, char const *argv[])
     std::cerr << "Utilisation : " << argv[0] << " x_depart y_depart couleur_depart x_destination y_destination" << std::endl;
     return -1;
   }
-
-  std::ifstream entree = std::ifstream(argv[1]);
+  std::cout << argv[1] << std::endl;
+  std::ifstream entree(argv[1]);
 
   Univers univers;
   entree >> univers;
