@@ -16,8 +16,11 @@ class MatriceAdjacent {
     public:
         Sommet(int couleur);
         Sommet();
-        void ajouter(int c);
         std::vector<int> arretes;
+        int operator[](int i){ return arretes[i];}
+        bool estCouleur(unsigned int c){return c == couleur;}
+        void setcouleur(unsigned int c){ couleur = c;}
+        int getCouleur(){return couleur;}
     };
 
 private:
@@ -27,8 +30,8 @@ public:
     MatriceAdjacent();
     MatriceAdjacent(std::vector<std::vector<int>>);
     void initMatrice(int N);
-    void creerSommet(unsigned int y, unsigned int x, int Currentcouleur, int nextCouleur );
-    void calculerMatriceAdjacent();
+    void creerSommet(unsigned int y, unsigned int x, int Currentcouleur);
+    Sommet operator [](int i){return matriceAdjacent[i];}
 
 };
 

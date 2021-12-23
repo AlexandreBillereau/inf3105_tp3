@@ -10,10 +10,6 @@ MatriceAdjacent::Sommet::Sommet(int couleur) {
   couleur = couleur;
 }
 
-void MatriceAdjacent::Sommet::ajouter(int c) {
-  couleur = c;
-}
-
 MatriceAdjacent::MatriceAdjacent() {}
 
 MatriceAdjacent::MatriceAdjacent(std::vector<std::vector<int>> univer) {
@@ -22,16 +18,16 @@ MatriceAdjacent::MatriceAdjacent(std::vector<std::vector<int>> univer) {
   for(int y(0); y < univer.size(); y++){
     for(int x(0); x < univer[y].size(); x++){
       if(y - 1 >= 0){
-        creerSommet(count, count - univer.size(), univer[y][x], univer[y - 1][x]);
+        creerSommet(count, count - univer.size(), univer[y][x]);
       }
       if(x + 1 <= univer[y].size() - 1){
-        creerSommet(count, count + 1, univer[y][x], univer[y][x + 1]);
+        creerSommet(count, count + 1, univer[y][x]);
       }
       if(y + 1 <= univer.size() - 1){
-        creerSommet(count, count + univer[y].size(), univer[y][x], univer[y + 1][x]);
+        creerSommet(count, count + univer[y].size(), univer[y][x]);
       }
       if(x - 1 >= 0){
-        creerSommet(count, count - 1, univer[y][x], univer[y][x - 1]);
+        creerSommet(count, count - 1, univer[y][x]);
       }
       count ++;
     }
@@ -48,7 +44,8 @@ void MatriceAdjacent::initMatrice(int N) {
   }
 }
 
-void MatriceAdjacent::creerSommet(unsigned int y, unsigned int x, int currentcouleur, int nextCouleur){
+void MatriceAdjacent::creerSommet(unsigned int y, unsigned int x, int currentcouleur){
 
-  matriceAdjacent[y].arretes[x] = currentcouleur == nextCouleur ? 1 : -1;
+    matriceAdjacent[y].arretes[x] = 1;
+    matriceAdjacent[y].setcouleur(currentcouleur);
 }
