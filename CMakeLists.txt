@@ -3,4 +3,4 @@ project(tp3)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(tp3 main.cpp MatriceAdjacent.cpp MatriceAdjacent.h)
+add_executable(tp3.cpp MatriceAdjacent.cpp MatriceAdjacent.h)

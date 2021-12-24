@@ -69,7 +69,7 @@ public:
         }
       }
 
-      printSolution(dist, nbSommet, parent, src, posSommet(x_destination, y_destination));
+      afficherSolution(dist, nbSommet, parent, src, posSommet(x_destination, y_destination));
 
     }
 
@@ -89,24 +89,45 @@ public:
       return (int)N * pos_y + pos_x;
     }
 
-    void printPath(int parent[], int j)
+    void afficherChemin(int parent[], int j, int sommetAvant = 0)
     {
-      if (parent[j] == - 1)
+      if (parent[j] == - 1){
+        if(matriceAdjacent[j].getCouleur() != matriceAdjacent[sommetAvant].getCouleur()){
+          printf("c ");
+        }
+        trouverProchainEtap(j, sommetAvant);
         return;
+      }
 
-      printPath(parent, parent[j]);
+      afficherChemin(parent, parent[j], j);
 
-      printf("%d ", j);
+      if(matriceAdjacent[j].getCouleur() != matriceAdjacent[sommetAvant].getCouleur()){
+        printf("c ");
+      }
+      trouverProchainEtap(j, sommetAvant);
+
     }
 
-    int printSolution(int dist[], int n, int parent[], int depart, int arriver)
+    void trouverProchainEtap(int j, int sommetAvant){
+      if(j + univer.size() == sommetAvant){
+        printf("b ");
+      }
+      if (j - univer.size() == sommetAvant){
+        printf("h ");
+      }
+      if(j - 1 == sommetAvant){
+        printf("g ");
+      }
+      if(j+1 == sommetAvant){
+        printf("d ");
+      }
+    }
+
+    void afficherSolution(int dist[], int n, int parent[], int depart, int arriver)
     {
       int src = depart;
-      printf("Sommet\t Distance\tChemin");
-
-        printf("\n%d -> %d \t\t %d\t\t%d ",
-               src, arriver, dist[arriver], src);
-        printPath(parent, arriver);
+      afficherChemin(parent, arriver);
+      std::cout << dist[arriver] << " " << std::endl;
 
     }
 

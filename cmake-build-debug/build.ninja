@@ -72,8 +72,8 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 
 build cmake_object_order_depends_target_tp3: phony || CMakeFiles/tp3.dir
 
-build CMakeFiles/tp3.dir/main.cpp.o: CXX_COMPILER__tp3_Debug /home/alexandre/WorkSpace/INF3105/tp3/main.cpp || cmake_object_order_depends_target_tp3
-  DEP_FILE = CMakeFiles/tp3.dir/main.cpp.o.d
+build CMakeFiles/tp3.dir/tp3.cpp.o: CXX_COMPILER__tp3_Debug /home/alexandre/WorkSpace/INF3105/tp3/tp3.cpp || cmake_object_order_depends_target_tp3
+  DEP_FILE = CMakeFiles/tp3.dir/tp3.cpp.o.d
   FLAGS = -g -std=gnu++11
   OBJECT_DIR = CMakeFiles/tp3.dir
   OBJECT_FILE_DIR = CMakeFiles/tp3.dir
@@ -92,7 +92,7 @@ build CMakeFiles/tp3.dir/MatriceAdjacent.cpp.o: CXX_COMPILER__tp3_Debug /home/al
 #############################################
 # Link the executable tp3
 
-build tp3: CXX_EXECUTABLE_LINKER__tp3_Debug CMakeFiles/tp3.dir/main.cpp.o CMakeFiles/tp3.dir/MatriceAdjacent.cpp.o
+build tp3: CXX_EXECUTABLE_LINKER__tp3_Debug CMakeFiles/tp3.dir/tp3.cpp.o CMakeFiles/tp3.dir/MatriceAdjacent.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/tp3.dir
   POST_BUILD = :
